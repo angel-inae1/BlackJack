@@ -1,0 +1,14 @@
+/Users/admin/RiderProjects/BlackJack/BlackJack/bin/Debug/net9.0/BlackJack
+/Users/admin/RiderProjects/BlackJack/BlackJack/bin/Debug/net9.0/BlackJack.deps.json
+/Users/admin/RiderProjects/BlackJack/BlackJack/bin/Debug/net9.0/BlackJack.runtimeconfig.json
+/Users/admin/RiderProjects/BlackJack/BlackJack/bin/Debug/net9.0/BlackJack.dll
+/Users/admin/RiderProjects/BlackJack/BlackJack/bin/Debug/net9.0/BlackJack.pdb
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.AssemblyInfoInputs.cache
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.AssemblyInfo.cs
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.dll
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/refint/BlackJack.dll
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.pdb
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.genruntimeconfig.cache
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/ref/BlackJack.dll

@@ -1,4 +1,4 @@
-namespace BlackJack.BussinesLogic;
+namespace BlackJack.BussinesLogic.Members;
 
 public class Player
 {

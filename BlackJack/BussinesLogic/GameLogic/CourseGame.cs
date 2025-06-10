@@ -1,8 +1,10 @@
+using BlackJack.BussinesLogic.Members;
+
 namespace BlackJack.BussinesLogic.GameLogic;
 
 public class CourseGame
 {
-    public void Hit(Player player, Deck deck)
+    public void Hit(Player player, Deck deck, Player dealer)
     {
         while (true)
         { 
@@ -28,7 +30,9 @@ public class CourseGame
             else if (input == "n")
             {
                 Console.WriteLine("Набор карт в руку завершен.");
-                break;
+                var dealerLogic = new Dealer();
+                dealerLogic.DealerTurn(player, dealer, deck);
+                return;
             }
             else
             {
@@ -78,9 +82,11 @@ public class CourseGame
         {
             Console.WriteLine("Перебор очков. Вы проиграли.");
         }
+        
+        
     }
 
-    public void Split(Player player, Deck deck)
+    public void Split(Player player, Deck deck, Player dealer)
     {
         var originalHand = player.Hands[0];
         var card1 = originalHand.Cards[0];
@@ -111,7 +117,7 @@ public class CourseGame
                 int value = player.Hands[i].GetTotalValue();
                 if (player.Hands[i].IsBust(value))
                 {
-                    Console.WriteLine("Перебор очков. Вы проиграли.");
+                    Console.WriteLine("Перебор очков. Рука проиграна.");
                     break;
                 }
 
@@ -135,5 +141,20 @@ public class CourseGame
                 }
             }
         }
+        var dealerLogic = new Dealer();
+        dealerLogic.DealerTurn(player, dealer, deck);
+    }
+
+    public static bool CheckHand(Player player)
+    {
+        foreach (var hand in player.Hands)
+        {
+            int value = hand.GetTotalValue();
+            if (!hand.IsBust(value))
+            {
+             return true;   
+            }
+        }
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-namespace BlackJack.BussinesLogic;
+namespace BlackJack.BussinesLogic.Members;
 
 public class Hand
 {
@@ -72,5 +72,4 @@ public class Hand
     {
         return _cards.Count == 2 && _cards[0].FaceValue == _cards[1].FaceValue;
     }
-
 }

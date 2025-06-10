@@ -1,4 +1,5 @@
 using BlackJack.BussinesLogic.GameLogic;
+using BlackJack.BussinesLogic.Members;
 
 namespace BlackJack.BussinesLogic;
 
@@ -30,38 +31,47 @@ public class Game
        {
            return;
        }
-        
-       Console.WriteLine("Игрок выбирает следующий ход: Хит(h), Стэнд(s), Дабл(d), Сплит(2), Сдаться(0)");
-       string? input = Console.ReadLine()?.ToLower();
 
-       switch (input)
+       while (true)
        {
-           case "h" :
-               CourseGame courseGame = new CourseGame();
-               courseGame.Hit(_player, _deck);
-               break;
-           case "s" :
-               Console.WriteLine("Ваши карты набраны, ход дилера.");
-               break;
-           case "d" :
-               CourseGame doubleGame = new CourseGame();
-               doubleGame.DoubleJack(_player, _deck);
-               break;
-           case "2" :
-               if (_player.Hands[0].CanSplit())
-               {
-                   CourseGame splitGame = new CourseGame();
-                   splitGame.Split(_player, _deck);
-               }
-               else
-               {
-                   Console.WriteLine("Сплит невозможен.");
-               }
-               break;
-           case "0" :
-               Console.WriteLine("Вы сдались. Вам возвращается половина ставки.");
-               return;
-       }
+           Console.WriteLine("Игрок выбирает следующий ход: Хит(h), Стэнд(s), Дабл(d), Сплит(2), Сдаться(0)");
+           string? input = Console.ReadLine()?.ToLower();
+           switch (input)
+           {
+               case "h":
+                   CourseGame courseGame = new CourseGame();
+                   courseGame.Hit(_player, _deck, _dealer);
+                   break;
+               case "s":
+                   Console.WriteLine("Ваши карты набраны, ход дилера.");
+                   var dealerLogic1 = new Dealer();
+                   dealerLogic1.DealerTurn(_player, _dealer, _deck);
+                   return;
+               case "d":
+                   CourseGame doubleGame = new CourseGame();
+                   doubleGame.DoubleJack(_player, _deck);
+                   var dealerLogic2 = new Dealer();
+                   dealerLogic2.DealerTurn(_player, _dealer, _deck);
+                   break;
+               case "2":
+                   if (_player.Hands[0].CanSplit())
+                   {
+                       CourseGame splitGame = new CourseGame();
+                       splitGame.Split(_player, _deck, _dealer);
+                   }
+                   else
+                   {
+                       Console.WriteLine("Сплит невозможен.");
+                   }
 
+                   continue;
+               case "0":
+                   Console.WriteLine("Вы сдались. Вам возвращается половина ставки.");
+                   return;
+               default:
+                   Console.WriteLine("Выберите действие: h/s/d/2/0");
+                   break;
+           }
+       }
     }
 }

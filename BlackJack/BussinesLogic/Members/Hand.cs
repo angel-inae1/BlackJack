@@ -1,3 +1,5 @@
+using BlackJack.BussinesLogic.Base;
+
 namespace BlackJack.BussinesLogic.Members;
 
 public class Hand
@@ -15,7 +17,6 @@ public class Hand
 
     public void AddCards(List<PlayingCard> newcards)
     {
-        _cards.AddRange(newcards);
         _cards.AddRange(newcards);
     }
     public IReadOnlyList<PlayingCard> Cards => _cards.AsReadOnly();
@@ -43,27 +44,28 @@ public class Hand
     }
 
     public bool IsBust(int value) => value > 21;
-    public bool IsBlackJack(int value) => value == 21 && _cards.Count == 2;
+    public bool IsBlackJack(int value) => value == 21 && _cards.Count >= 2;
 
     public void DisplayHands(bool initial = false)
     {
-        Console.WriteLine("Карты в руке:");
+        Console.Write("Карты:");
 
         for (int i = 0; i < _cards.Count; i++)
         {
             var card = _cards[i];
             if (initial&& i==0)
             {
-                Console.WriteLine("[Скрытая карта]");
+                Console.Write("\t[Скрытая карта]");
             }
             else
             {
-                Console.WriteLine(card.ToString());
+                Console.Write($"\t{card}");
             }
         }
 
         if (!initial)
         {
+            Console.WriteLine();
             Console.WriteLine($"Сумма очков:{GetTotalValue()}");
         }
     }

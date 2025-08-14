@@ -1,10 +1,10 @@
-namespace BlackJack.BussinesLogic;
+namespace BlackJack.BussinesLogic.Base;
 
 public class Deck
 {
     public List<PlayingCard> Cards { get; }
-    public Random random = new Random();
-    
+    private static Random _random = new Random();
+
     public Deck()
     {
         Cards = new List<PlayingCard>();
@@ -19,7 +19,7 @@ public class Deck
 
     public PlayingCard DrawCard()
     {
-        int index = random.Next(Cards.Count);
+        int index = _random.Next(Cards.Count);
         PlayingCard card = Cards[index];
         Cards.RemoveAt(index);
         return card;

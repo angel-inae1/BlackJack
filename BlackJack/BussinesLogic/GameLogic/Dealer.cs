@@ -1,15 +1,30 @@
+using BlackJack.BussinesLogic.Base;
 using BlackJack.BussinesLogic.Members;
 
 namespace BlackJack.BussinesLogic.GameLogic;
 
 public class Dealer
 {
-    public void DealerTurn(Player player, Player dealer, Deck deck)
+    public List<string> DealerTurn(Player player, Player dealer, Deck deck)
     {
-        if (!CourseGame.CheckHand(player))
+        List<string> dealerTurn = new List<string>();
+
+        foreach (var hand in player.Hands)
         {
-            Console.WriteLine("Вы приграли. Ставку забирает дилер.");
-            return;
+            int playerPoints = hand.GetTotalValue();
+            if (hand.IsBust(playerPoints))
+            {
+                dealerTurn.Add("lose");
+            }
+            else
+            {
+                dealerTurn.Add("");
+            }
+        }
+
+        if (dealerTurn.All(r => r == "lose"))
+        {
+            return dealerTurn;
         }
         
         Console.WriteLine("Ход дилера. Открывается первая карта дилера.");
@@ -17,43 +32,53 @@ public class Dealer
         
         var dealerHand = dealer.Hands[0];
         int dealerPoints = dealerHand.GetTotalValue();
+        Console.WriteLine();
 
         while (dealerPoints < 17)
         {
             var card = deck.DrawCard();
             dealerHand.AddCard(card);
-            Console.WriteLine($"Дилер берет карту: {card}");
+            Console.WriteLine("Дилер берет карту");
             dealerHand.DisplayHands();
             dealerPoints = dealerHand.GetTotalValue();
+            Console.WriteLine();
         }
-        Console.WriteLine($"Сумма очков дилера : {dealerPoints}");
 
-        for (int i = 0; i < dealer.Hands.Count; i++)
+        for (int i = 0; i < player.Hands.Count; i++)
         {
+            if (dealerTurn[i]!="") continue;
             var hand = player.Hands[i];
             int playerPoints = hand.GetTotalValue();
-            Console.WriteLine($"Рука игрока {i+1}: {playerPoints} очков.");
+            string result;
 
             if (hand.IsBust(playerPoints))
             {
-                Console.WriteLine($"В руке {i+1} перебор. Вы проиграли эту руку, ставку забирает дилер.");
+                result = "lose";
             }
             else if (dealerPoints > 21)
             {
-                Console.WriteLine($"У дилера перебор. Рука {i+1} выигрывает!");
+                result = "win";
             }
             else if (dealerPoints > playerPoints)
             {
-                Console.WriteLine($"У дилера больше очков, Рука {i+1} проигрывает!");
+                result = "lose";
             }
             else if (dealerPoints < playerPoints)
             {
-                Console.WriteLine($"У вас больше очков, Рука {i+1} выигрывает!");
+               result = "win";
             }
-            else if (dealerPoints == playerPoints)
+            else if (dealerPoints == 21)
             {
-                Console.WriteLine("Ничья! Ставка возвращается.");
+                result = "lose";
             }
+            else
+            {
+                result = "draw";
+            }
+
+            dealerTurn.Add(result);
         }
+
+        return dealerTurn;
     }
 }

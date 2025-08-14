@@ -1,4 +1,4 @@
-namespace BlackJack.BussinesLogic;
+namespace BlackJack.BussinesLogic.Base;
 
 public enum FaceValueOfCard
 {

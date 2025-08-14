@@ -1,5 +1,5 @@
 ﻿using BlackJack.BussinesLogic;
-using BlackJack.BussinesLogic.User;
+using BlackJack.BussinesLogic.BlackJack.Models;
 
 namespace BlackJack
 {
@@ -8,13 +8,15 @@ namespace BlackJack
         static void Main()
         {
             var userManager = new UserManager();
-            var auth = new Authentication(userManager);
+            Authentication auth = new Authentication(userManager);
             Console.WriteLine("Здравствуйте, игрок! Войдите в систему.");
+            Console.WriteLine();
             
             User currentUser = auth.Authenticate();
-            Console.WriteLine($"Привет, {currentUser.Login}! Ваш баланс {currentUser.Balance}$");
+            Console.WriteLine($"Привет, {currentUser.Login}! Ваш баланс {currentUser.Balance} руб ");
+            Console.WriteLine();
             
-            var game = new Game();
+            Game game = new Game(currentUser, userManager);
             game.StartGame();
         }
     }

@@ -1,5 +1,5 @@
 
-namespace BlackJack.BussinesLogic.User;
+namespace BlackJack.BussinesLogic.BlackJack.Models;
 
 public class User
 {
@@ -15,6 +15,4 @@ public class User
         Password = password;
         Balance = balance;
     }
-    
-    
 }

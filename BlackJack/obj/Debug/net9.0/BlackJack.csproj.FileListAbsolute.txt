@@ -7,6 +7,7 @@
 /Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.AssemblyInfoInputs.cache
 /Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.AssemblyInfo.cs
 /Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.csproj.CoreCompileInputs.cache
+/Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.sourcelink.json
 /Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.dll
 /Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/refint/BlackJack.dll
 /Users/admin/RiderProjects/BlackJack/BlackJack/obj/Debug/net9.0/BlackJack.pdb

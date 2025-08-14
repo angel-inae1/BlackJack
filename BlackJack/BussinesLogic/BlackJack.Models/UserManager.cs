@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace BlackJack.BussinesLogic.User;
+namespace BlackJack.BussinesLogic.BlackJack.Models;
 
 public class UserManager
 {
@@ -42,6 +42,11 @@ public class UserManager
 
     public void LoadUsers()
     {
+        if (!File.Exists(_filePath))
+        {
+            Users = new List<User>();
+            return;
+        }
         string json = File.ReadAllText(_filePath);
         var loadedUsers = JsonSerializer.Deserialize<List<User>>(json);
         if (loadedUsers != null)

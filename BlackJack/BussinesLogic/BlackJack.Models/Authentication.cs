@@ -1,4 +1,4 @@
-namespace BlackJack.BussinesLogic.User;
+namespace BlackJack.BussinesLogic.BlackJack.Models;
 
 public class Authentication
 {
@@ -13,7 +13,7 @@ public class Authentication
     {
         while (true)
         {
-            Console.WriteLine("Введите ваш логин:");
+            Console.Write("Введите ваш логин:\t");
             string? login = Console.ReadLine();
             
             if (string.IsNullOrWhiteSpace(login))
@@ -28,7 +28,7 @@ public class Authentication
 
                 while (user == null)
                 {
-                    Console.WriteLine("Пользователь найден. Введите пароль:");
+                    Console.Write("Пользователь найден. Введите пароль:\t");
                     string? password = Console.ReadLine();
 
                     if (string.IsNullOrWhiteSpace(password))
@@ -44,18 +44,16 @@ public class Authentication
                         Console.WriteLine("Неверный пароль! Попробуйте снова!");
                     }
                 }
-
-                Console.WriteLine($"Успешный вход! Баланс: {user.Balance}");
                 return user;
             }
             else
             {
-                Console.WriteLine("Пользователь не найде! зарегестрироваться? (y/n)");
+                Console.WriteLine("Пользователь не найден! зарегестрироваться? (y/n)\t");
                 string? answer = Console.ReadLine();
                 
                 if (answer?.ToLower() == "y")
                 {
-                    Console.WriteLine("Введите новый пароль:");
+                    Console.Write("Введите новый пароль:\t");
                     string? password = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(password))
                     {
@@ -65,7 +63,8 @@ public class Authentication
 
                     if (_userManager.RegisterUser(login, password))
                     {
-                        Console.WriteLine("Регистрация прошла успешно! Ваш начальный баланс 1000$. Войдите в систему с новым логином и паролем!");
+                        Console.WriteLine("Регистрация прошла успешно! Ваш начальный баланс 1000 руб. Войдите в систему с новым логином и паролем!");
+                        Console.WriteLine();
                     }
                     else
                     {
